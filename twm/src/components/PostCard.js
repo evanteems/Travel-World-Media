@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
 import { Card, Icon, Label, Image, Button } from 'semantic-ui-react';
 import moments from 'moment';
-import { Link } from 'react=router-dom';
+import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../context/auth';
 import TheLike from './Like';
 import TheDelete from './Delete';
-import Tooltip from '../utils/Tooltip';
-import LikeButton from './Like';
+import ToolTip from '../utils/Tooltip';
 
 function PostCard({ post: { body, createdAt, id, username, likeCount, commentCount, likes } }) {
     const {user} = useContext(AuthContext);
@@ -21,7 +20,7 @@ function PostCard({ post: { body, createdAt, id, username, likeCount, commentCou
                 <Card.Description>{body}</Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <LikeButton user={user} post={{ id, likes, likeCount }} />
+                <TheLike user={user} post={{ id, likes, likeCount }} />
                 <ToolTip content="Comment for this post">
                     <Button labelPosition="right" as={Link} to={`/posts/${id}`}>
                         <Button color="orange" basic>
@@ -32,7 +31,7 @@ function PostCard({ post: { body, createdAt, id, username, likeCount, commentCou
                         </Label>
                     </Button>
                 </ToolTip>
-                {user && user.username === username && <DeleteButton postId={id} />}
+                {user && user.username === username && <TheDelete postId={id} />}
             </Card.Content>
         </Card>
     );

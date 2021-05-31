@@ -53,7 +53,7 @@ function Login(props) {
                 <div className="ui error message">
                     <ul className="list">
                         {Object.values(errors).map((values) => (
-                            <li key={values}>{value}</li>
+                            <li key={values}>{values}</li>
                         ))}
                     </ul>
                 </div>

@@ -6,7 +6,7 @@ import { AuthContext } from '../context/auth';
 
 import PostsCards from '../components/PostCard';
 import PostsForms from '../components/PostForm';
-import { FETCH_POSTS_QUERY } from '../utils.graphql';
+import { FETCH_POSTS_QUERY } from '../utils/graphql';
 
 function Home() {
     const { loading, data } = useQuery(FETCH_POSTS_QUERY);
@@ -14,7 +14,7 @@ function Home() {
 
     return (
         <Grid columns={3}>
-            <Grid.Row classNmae="page-title">
+            <Grid.Row className="page-title">
                 <h1>Recent Posts</h1>
             </Grid.Row>
             <Grid.Row>
@@ -25,7 +25,7 @@ function Home() {
                 )}
                 {loading ? (
                     <h1>Loading posts...</h1>
-                ) : (
+                ):(
                     <Transition.Group>
                         {data.getPosts &&
                             data.getPosts.map((post) => (
