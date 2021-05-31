@@ -25,7 +25,7 @@ function Home() {
                 )}
                 {loading ? (
                     <h1>Loading posts...</h1>
-                ):(
+                ) : (
                     <Transition.Group>
                         {data.getPosts &&
                             data.getPosts.map((post) => (
