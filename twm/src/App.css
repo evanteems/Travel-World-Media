@@ -3,6 +3,7 @@
     text-align: center;
     font-size: 2rem;
     margin-top: 10px;
+<<<<<<< HEAD
 }
 
 .form-container {
@@ -15,3 +16,18 @@
 .ui.teal.button:hover {
     background-color: #00b5ad;
 }
+=======
+  }
+  
+  .form-container {
+    width: 400px;
+    margin: auto;
+  }
+  
+  .ui.teal.button:focus,
+  .ui.teal.buttons .button:focus,
+  .ui.teal.button:hover {
+    background-color: #00b5ad;
+  }
+  
+>>>>>>> a1e717675c4a5932f013cbcd6a0dde869c3a51b5
