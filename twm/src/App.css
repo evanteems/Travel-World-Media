@@ -6,12 +6,12 @@
 }
 
 .form-container {
-    width: 400px;
-    margin: auto;
+  width: 400px;
+  margin: auto;
 }
 
 .ui.teal.button:focus,
-.ui.teal.button .button:focus,
+.ui.teal.buttons .button:focus,
 .ui.teal.button:hover {
-    background-color: #00b5ad;
+  background-color: #00b5ad;
 }
