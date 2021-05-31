@@ -17,7 +17,7 @@ const server = new ApolloServer({
   context: ({ req }) => ({ req, pubsub }),
 });
 
-server.applyMiddleware({ app });
+server.applyMiddleware({ App });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

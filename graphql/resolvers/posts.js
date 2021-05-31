@@ -13,6 +13,7 @@ module.exports = {
         throw new Error(err);
       }
     },
+    
     async getPost(_, { postId }) {
       try {
         const post = await Post.findById(postId);
@@ -25,6 +26,7 @@ module.exports = {
       }
     },
   },
+
   Mutation: {
     async createPost(_, { body }, context) {
       const user = checkAuth(context);
@@ -49,6 +51,7 @@ module.exports = {
 
       return post;
     },
+
     async deletePost(_, { postId }, context) {
       const user = checkAuth(context);
       // make sure it is the same user's own post
@@ -64,6 +67,7 @@ module.exports = {
         throw new Error(err);
       }
     },
+
     async likePost(_, { postId }, context) {
       const { username } = checkAuth(context);
 
@@ -87,6 +91,7 @@ module.exports = {
       throw new UserInputError('Post not found');
     },
   },
+
   Subscription: {
     newPost: {
       subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_POST'),
