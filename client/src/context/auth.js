@@ -39,3 +39,25 @@ function authReducer(state, action) {
   }
 }
 
+function AuthProvider(props) {
+  const [state, dispatch] = useReducer(authReducer, initialState);
+
+  function login(userData) {
+    // persist the logged in state by storing the token on the user's device
+    localStorage.setItem('jwtToken', userData.token);
+    dispatch({
+      type: 'LOGIN',
+      payload: userData,
+    });
+  }
+
+  function logout() {
+    localStorage.removeItem('jwtToken');
+    dispatch({ type: 'LOGOUT' });
+  }
+
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return <AuthContext.Provider value={{ user: state.user, login, logout }} {...props} />;
+}
+
+export { AuthContext, AuthProvider };
