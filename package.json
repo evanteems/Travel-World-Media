@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "cd client && npm install nodemon -g && npm install && npm run build",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node index.js",
+    "start:dev": "concurrently \"node index.js\" \"cd client && npm start\"",
+    "install": "npm i && cd client && npm i",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -18,11 +20,14 @@
   "dependencies": {
     "apollo-server": "^2.18.2",
     "bcryptjs": "^2.4.3",
+    "concurrently": "^6.2.0",
     "dotenv": "^10.0.0",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
+    "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.9"
+    "mongoose": "^5.10.9",
+    "semantic": "0.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

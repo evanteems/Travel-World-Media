@@ -3,16 +3,33 @@
   text-align: center;
   font-size: 2rem;
   margin-top: 10px;
+  background-color: lightblue;
 }
-
 
 .form-container {
   width: 400px;
   margin: auto;
+  box-shadow: 5in;
+  background-color: lightblue;
 }
 
 .ui.teal.button:focus,
 .ui.teal.buttons .button:focus,
 .ui.teal.button:hover {
-  background-color: #00d1c7;
+  background-color: #b58500;
+}
+
+.ui.menu {
+  border-color: tomato !important;
+  color: tomato !important;
+}
+
+body {
+  background: url(./images/colors.jpg) fixed center;
+  height: 700px;
+  width: 100%;
+}
+
+.ui.secondary.pointing.menu {
+  color: white !important;
 }

@@ -14,6 +14,7 @@ if (localStorage.getItem('jwtToken')) {
     initialState.user = decodedToken;
   }
 }
+
 const AuthContext = createContext({
   user: null,
   login: (userData) => {},
