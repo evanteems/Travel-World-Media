@@ -1,31 +1,39 @@
-module.exports.validateRegisteredInputs = (username, password, confirmPassword) => {
+module.exports.validateRegisterInput = (username, email, password, confirmPassword) => {
     const errors = {};
     if (username.trim() === '') {
-        errors.username = 'Your username was forgotten...';
+      errors.username = 'Hmmm... you forgot a username.';
+    }
+    if (email.trim() === '') {
+      errors.email = 'Uh oh, you forgot your email!';
+    } else {
+      const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+      if (!email.match(regEx)) {
+        errors.email = `Email typo detected... we're looking for something like "johnsmith@gmail.com"`;
+      }
     }
     if (password === '') {
-        errors.password = 'Please dont leave this empty, you might get hacked. Possibly... :3.';
+      errors.password = 'Empty passwords are too easy to hack. Pick something with at least 1 character.';
     } else if (password !== confirmPassword) {
-        errors.confirmPassword = 'This the passowrd you were lookig for bud... NOT!!';
+      errors.confirmPassword = 'Dang... there was a typo in your confirm password field. Try again.';
     }
-
+  
     return {
-        errors,
-        valid: Object.keys(errors).length < 1,
+      errors,
+      valid: Object.keys(errors).length < 1,
     };
-};
-
-module.exports.validateLoginInput = (username, password) => {
+  };
+  
+  module.exports.validateLoginInput = (username, password) => {
     const errors = {};
     if (username.trim() === '') {
-        errors.username = 'You forgot your username? Funny...';
+      errors.username = 'Hmmm... you forgot a username.';
     }
-    if (password,trim() === '') {
-        errors.password = 'Forgot that password huh?';
+    if (password.trim() === '') {
+      errors.password = 'You forgot your password.';
     }
-
+  
     return {
-        errors,
-        valid: Object.keys(errors).length < 1,
+      errors,
+      valid: Object.keys(errors).length < 1,
     };
-};
+  };

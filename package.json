@@ -1,38 +1,42 @@
 {
-  "name": "travel-world-media",
+  "name": "merng",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "node index",
-    "start": "node index",
+    "start": "node index.js",
+    "build": "cd client && npm install nodemon -g && npm install && npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.25.0",
+    "apollo-server": "^2.18.2",
     "bcryptjs": "^2.4.3",
-    "graphql": "^15.5.0",
-    "graphql-tag": "^2.12.4",
+    "dotenv": "^10.0.0",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.11.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.12"
+    "mongoose": "^5.10.9"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.27.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslist-plugin-html": "^6.1.0",
-    "eslist-config-wesbos": "1.0.1",
-    "eslist-plugin-import": "^2.22.0",
-    "eslist-plugin-jsx-a11y": "^6.3.1",
-    "eslist-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-wesbos": "1.0.1",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
     "nodemon": "^2.0.7",
-    "prettier": "^2.3.0"
+    "prettier": "^2.1.1"
   }
 }
