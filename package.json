@@ -7,7 +7,6 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node index.js",
     "start:dev": "concurrently \"node index.js\" \"cd client && npm start\"",
-    "install": "cd client && npm i",
     "seed": "cd server && npm run seed"
   },
   "engines": {
