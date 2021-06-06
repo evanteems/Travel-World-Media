@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import { Button, Icon, Label } from 'semantic-ui-react';
-import Tooltip from '../util/Tooltip';
+import Tooltip from '../utils/Tooltip';
 
 // eslint-disable-next-line react/prop-types
 function LikeButton({ user, post: { id, likeCount, likes } }) {

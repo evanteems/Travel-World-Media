@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "node index",
-    "start": "nodemon index",
+    "start": "node index.js",
+    "build": "cd client && npm install nodemon -g && npm install && npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +18,7 @@
   "dependencies": {
     "apollo-server": "^2.18.2",
     "bcryptjs": "^2.4.3",
-    "express": "^4.17.1",
+    "dotenv": "^10.0.0",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
     "jsonwebtoken": "^8.5.1",
@@ -33,7 +36,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.2",
-    "nodemon": "^2.0.6",
+    "nodemon": "^2.0.7",
     "prettier": "^2.1.1"
   }
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { Button, Confirm, Icon } from 'semantic-ui-react';
-import tooltip from '../utils/Tooltip';
+import Tooltip from '../utils/Tooltip';
 
 import { FETCH_POSTS_QUERY } from '../utils/graphql';
 
@@ -21,7 +21,49 @@ function DeleteButtons({ postId, commentId, callback }) {
                 });
 
                 const posts = [result.data, ...data.getPosts];
+                proxy.writeQuery({ query: FETCH_POSTS_QUERY, data: { getPosts: posts } });
             }
-        }
-    })
+
+            if (callback) callback(); 
+        },
+        variables: {
+            postId,
+            commentId,
+        },
+        onError(err) {
+            return err;
+        },
+    });
+    return (
+        <>
+            <Tooltip content={commentId ? 'Delete this comment Please' : 'Delete this post!'}>
+                <Button as="div" color="red" floated="right" onClick={() => setConfirmOpen(true)}>
+                    <Icon name="trash" style={{ margin: 0 }} />
+                </Button>
+            </Tooltip>
+            <Confirm open={confirmOpen} onCancel={() => setConfirmOpen(false)} onConfirm={deletePostOrComment} />
+        </>
+    );
 }
+const DELETE_POST_MUTATION = gql`
+    mutation deletePost($postId: ID!) {
+        deletePost(postId: $postId)
+    }
+`;
+
+const DELETE_COMMENT_MUTATION = gql`
+    mutation deletePost($postId: ID!) {
+        deletePost(postId: $postId, commentId: $commentId) {
+            id
+            comments {
+                id
+                username
+                createdAt
+                body
+            }
+            commentCount
+        }
+    }
+`;
+
+export default DeleteButtons;

@@ -1,14 +1,14 @@
 /* eslint-disable no-console */
 const { ApolloServer, PubSub } = require('apollo-server');
-const express = require('express');
+const mongoose = require('mongoose');
+
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
-
-const db = require('./config/connection');
+const { MONGODB } = require('./config');
 
 const pubsub = new PubSub();
 
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000
 
 const server = new ApolloServer({
   typeDefs,
@@ -17,14 +17,19 @@ const server = new ApolloServer({
   context: ({ req }) => ({ req, pubsub }),
 });
 
-server.applyMiddleware({ app });
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
-db.once('open', () => {
-  app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
-    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+mongoose
+  .connect('mongodb://localhost/apollo-graphql', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('MongoDB Connected');
+    return server.listen({ port: PORT });
+  })
+  .then((res) => {
+    console.log(`Server running at ${res.url}`);
+  })
+  .catch((err) => {
+    console.log('CANNOT connect to mongodb')
+    console.error(err);
   });
-});
