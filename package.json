@@ -1,13 +1,14 @@
 {
   "name": "merng",
   "version": "1.0.0",
-  "description": "",
+  "description": "**MERNG Social Media App** ​   [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)",
   "main": "index.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node index.js",
     "start:dev": "concurrently \"node index.js\" \"cd client && npm start\"",
-    "seed": "cd server && npm run seed"
+    "seed": "cd server && npm run seed",
+    "build": ""
   },
   "engines": {
     "node": "14.x"
@@ -43,5 +44,13 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "nodemon": "^2.0.7",
     "prettier": "^2.1.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evanteems/Travel-World-Media.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evanteems/Travel-World-Media/issues"
+  },
+  "homepage": "https://github.com/evanteems/Travel-World-Media#readme"
 }
